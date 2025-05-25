@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>註冊 - 翠峰員工平台</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; }
+    label { display: block; margin-top: 1em; }
+    input { padding: 0.5em; width: 100%; max-width: 300px; }
+    button { margin-top: 1em; padding: 0.5em 1em; }
+  </style>
+</head>
+<body>
+  <h1>註冊帳號</h1>
+  <form id="registerForm">
+    <label>帳號：
+      <input type="text" id="username" required />
+    </label>
+    <label>密碼：
+      <input type="password" id="password" required />
+    </label>
+    <button type="submit">註冊</button>
+  </form>
+
+  <p>已有帳號？<a href="login.html">前往登入</a></p>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // 儲存到 localStorage
+      localStorage.setItem("user_" + username, password);
+      alert("註冊成功！");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

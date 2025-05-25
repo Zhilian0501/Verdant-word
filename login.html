@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>登入 - 翠峰員工平台</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; }
+    label { display: block; margin-top: 1em; }
+    input { padding: 0.5em; width: 100%; max-width: 300px; }
+    button { margin-top: 1em; padding: 0.5em 1em; }
+  </style>
+</head>
+<body>
+  <h1>登入帳號</h1>
+  <form id="loginForm">
+    <label>帳號：
+      <input type="text" id="username" required />
+    </label>
+    <label>密碼：
+      <input type="password" id="password" required />
+    </label>
+    <button type="submit">登入</button>
+  </form>
+
+  <p>尚未註冊？<a href="register.html">前往註冊</a></p>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const storedPassword = localStorage.getItem("user_" + username);
+      if (storedPassword === password) {
+        alert("登入成功！");
+        // 登入成功後導向首頁
+        window.location.href = "test.html";
+      } else {
+        alert("帳號或密碼錯誤！");
+      }
+    });
+  </script>
+</body>
+</html>
