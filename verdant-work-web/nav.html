@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>滑動導覽列</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffe5ec;
+      padding: 12px 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      transition: top 0.4s ease;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #7c3aed;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #a855f7;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #7c3aed;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #fff0f5;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+        display: none;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    /* 占位用內容 */
+    .content {
+      padding-top: 80px;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <a href="/workspaces/Verdant-word/index.html"><img src="" alt="Logo"></a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="#">首頁</a></li>
+      <li><a href="#">註冊</a></li>
+      <li><a href="#">登入</a></li>
+      <li><a href="#">個人資料</a></li>
+      <li><a href="#">官網</a></li>
+      <li><a href="#">應用系統</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <p>（此處為模擬內容，可自行填入頁面內容）</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, placeat. <br>往下滑來觸發導覽列隱藏效果。</p>
+    <p style="margin-top:1000px;">這裡模擬很長的頁面。</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById("navMenu");
+      navMenu.classList.toggle("active");
+    }
+
+    let lastScrollTop = 0;
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        // 向下滾動 → 隱藏
+        navbar.style.top = "-80px";
+      } else {
+        // 向上滾動 → 顯示
+        navbar.style.top = "0";
+      }
+      lastScrollTop = scrollTop;
+    });
+  </script>
+
+</body>
+</html>
