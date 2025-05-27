@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>C003 - 公司停車位申請系統</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 12px; }
+    input, select { width: 100%; padding: 8px; margin-top: 4px; }
+    button { margin-top: 20px; padding: 10px 16px; }
+  </style>
+</head>
+<body>
+  <h1>C003 - 公司停車位申請系統</h1>
+  <form>
+    <label>姓名：</label>
+    <input type="text" required>
+
+    <label>職位：</label>
+    <input type="text" required>
+
+    <label>車牌號碼：</label>
+    <input type="text" required>
+
+    <label>申請車位類型：</label>
+    <select>
+      <option>汽車</option>
+      <option>機車</option>
+      <option>臨時車位</option>
+    </select>
+
+    <button type="submit">送出申請</button>
+  </form>
+  <a href="index.html">← 返回首頁</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>A010 - italk 建言系統</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 12px; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 4px; }
+    button { margin-top: 20px; padding: 10px 16px; }
+    a { display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>A010 - italk 公司建言系統</h1>
+  <form>
+    <label>姓名（可留空以匿名）：</label>
+    <input type="text" name="name">
+
+    <label>職位：</label>
+    <input type="text" name="position">
+
+    <label>建議內容：</label>
+    <textarea name="suggestion" rows="6" required></textarea>
+
+    <button type="submit">送出建言</button>
+  </form>
+  <a href="index.html">← 返回首頁</a>
+</body>
+</html>

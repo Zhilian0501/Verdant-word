@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>D001 - 員工請假系統</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 12px; }
+    input, select, textarea { width: 100%; padding: 8px; margin-top: 4px; }
+    button { margin-top: 20px; padding: 10px 16px; }
+  </style>
+</head>
+<body>
+  <h1>D001 - 員工請假系統</h1>
+  <form>
+    <label>姓名：</label>
+    <input type="text" required>
+
+    <label>職位：</label>
+    <input type="text" required>
+
+    <label>請假類型：</label>
+    <select>
+      <option>事假</option>
+      <option>病假</option>
+      <option>特休</option>
+      <option>喪假</option>
+    </select>
+
+    <label>請假起訖時間：</label>
+    <input type="text" placeholder="例：2025/06/01 ~ 2025/06/03" required>
+
+    <label>請假原因：</label>
+    <textarea rows="3"></textarea>
+
+    <button type="submit">提交請假</button>
+  </form>
+  <a href="index.html">← 返回首頁</a>
+</body>
+</html>

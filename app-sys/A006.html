@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>A006 - 工讀生報名系統</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 12px; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 4px; }
+    button { margin-top: 20px; padding: 10px 16px; }
+    a { display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>A006 - 工讀生報名系統</h1>
+  <form>
+    <label>姓名：</label>
+    <input type="text" name="name" required>
+
+    <label>職位（或申請部門）：</label>
+    <input type="text" name="position" required>
+
+    <label>身分證字號：</label>
+    <input type="text" name="id" required>
+
+    <label>電話：</label>
+    <input type="tel" name="phone" required>
+
+    <label>就讀學校與科系：</label>
+    <input type="text" name="school">
+
+    <label>可配合時間：</label>
+    <textarea name="availability" rows="3"></textarea>
+
+    <button type="submit">送出申請</button>
+  </form>
+  <a href="index.html">← 返回首頁</a>
+</body>
+</html>

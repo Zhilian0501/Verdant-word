@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>A014 - 會議簽到與出席統計</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 12px; }
+    input, select { width: 100%; padding: 8px; margin-top: 4px; }
+    button { margin-top: 20px; padding: 10px 16px; }
+    a { display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>A014 - 會議簽到與出席統計</h1>
+  <form>
+    <label>姓名：</label>
+    <input type="text" name="name" required>
+
+    <label>職位：</label>
+    <input type="text" name="position" required>
+
+    <label>會議名稱：</label>
+    <input type="text" name="meeting" required>
+
+    <label>出席狀態：</label>
+    <select name="status">
+      <option value="出席">出席</option>
+      <option value="遲到">遲到</option>
+      <option value="請假">請假</option>
+      <option value="缺席">缺席</option>
+    </select>
+
+    <button type="submit">簽到</button>
+  </form>
+  <a href="index.html">← 返回首頁</a>
+</body>
+</html>

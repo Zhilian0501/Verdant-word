@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>A013 - 投票系統</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .vote-box {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 8px;
+      padding: 8px 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>A013 - 投票系統</h1>
+
+  <div class="vote-box">
+    <h3>2025 員工旅遊地點票選</h3>
+    <form>
+      <label><input type="radio" name="trip" value="台東綠島"> 台東綠島</label><br>
+      <label><input type="radio" name="trip" value="花蓮太魯閣"> 花蓮太魯閣</label><br>
+      <label><input type="radio" name="trip" value="南投清境"> 南投清境</label><br>
+      <button type="submit">送出投票</button>
+    </form>
+  </div>
+
+  <div class="vote-box">
+    <h3>本月之星候選人</h3>
+    <form>
+      <label><input type="radio" name="star" value="李佩君"> 李佩君</label><br>
+      <label><input type="radio" name="star" value="吳志偉"> 吳志偉</label><br>
+      <label><input type="radio" name="star" value="蔡玉婷"> 蔡玉婷</label><br>
+      <button type="submit">送出投票</button>
+    </form>
+  </div>
+
+  <a href="index.html">← 返回首頁</a>
+</body>
+</html>
