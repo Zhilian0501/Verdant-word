@@ -11,7 +11,9 @@
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
-      background: #f4f9f6;
+      background: linear-gradient(135deg, #47e7aa, #1bdbbb, #dae7e4);
+      min-height: 100vh;
+      background-attachment: fixed;
     }
 
     .container {
@@ -27,23 +29,30 @@
     }
 
     .card {
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 13px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transition: 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
+      backdrop-filter: blur(6px);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 10px rgba(219, 226, 226, 0.12);
     }
 
     .card h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
+      margin: 0 0 8px;
+      font-size: 25px;
       color: #2c3e50;
+    }
+
+    .card p {
+      margin: 0;
+      color: #666;
+      font-size: 20px;
     }
 
     #calendar {
@@ -68,7 +77,7 @@
 
     <!-- 其他功能區塊 -->
     <div class="dashboard">
-      <div class="card" onclick="location.href='app-sys/B-block/B002.html">
+      <div class="card" onclick="location.href=''">
         <h3>🎒 失物招領</h3>
         <p>查看並回報失物</p>
       </div>
