@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>會議登記中心 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0c1028, #1a1f38);
+      color: white;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    form {
+      background-color: #1a1c30;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #00ffcc44;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      background-color: #141628;
+      border: 1px solid #444;
+      color: white;
+    }
+
+    input[type="file"] {
+      background-color: #fff;
+      color: black;
+    }
+
+    button {
+      background-color: #00ffcc55;
+      border: 1px solid #00ffcc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00ffcc88;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+  <h1>📅 Nexelink 會議登記中心</h1>
+  <form>
+    <label for="topic">會議主題</label>
+    <input type="text" id="topic" name="topic" placeholder="請輸入本次會議主題">
+
+    <label for="host">主持人</label>
+    <select id="host" name="host">
+      <option value="self">自己擔任主持人</option>
+      <option value="member1">黃治閎</option>
+      <option value="member2">林柏宇</option>
+      <option value="member3">葉郁庭</option>
+    </select>
+
+    <label for="date">會議日期</label>
+    <input type="date" id="date" name="date">
+
+    <label for="time">會議時間</label>
+    <input type="time" id="time" name="time">
+
+    <label for="description">議程簡介</label>
+    <textarea id="description" name="description" rows="4" placeholder="簡要說明會議討論內容..."></textarea>
+
+    <label for="file">上傳簡報 / 備忘文件（選填）</label>
+    <input type="file" id="file" name="file">
+
+    <label for="link">會議連結（如 Google Meet / Zoom）</label>
+    <input type="url" id="link" name="link" placeholder="https://meet.google.com/...">
+
+    <button type="submit">✅ 登記會議</button>
+  </form>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>N008 - 任務積分與關卡系統</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #0f1b2a, #1c2b4a);
+      color: white;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      text-shadow: 1px 1px 0 #00ff7f;
+    }
+
+    .progress-box {
+      margin: 30px 0;
+    }
+
+    .bar-label {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      background: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+
+    .progress-fill {
+      background: #00ff7f;
+      width: 68%;
+      height: 100%;
+    }
+
+    .score-summary {
+      margin-top: 30px;
+    }
+
+    .score-summary p {
+      margin: 6px 0;
+    }
+
+    .ranking {
+      margin-top: 40px;
+    }
+
+    .ranking h3 {
+      color: #00ff7f;
+      margin-bottom: 10px;
+    }
+
+    .ranking li {
+      list-style: none;
+      border-bottom: 1px solid #00ff7f33;
+      padding: 10px 0;
+    }
+
+    .ranking li span {
+      float: right;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <div id="navContainer"></div>
+
+  <div class="container">
+    <h1>N008 - 任務積分 / 關卡系統</h1>
+
+    <div class="score-summary">
+      <p>🎖️ 當前等級：<strong>Level 5</strong></p>
+      <p>⭐ 任務總積分：<strong>680 / 1000 分</strong></p>
+    </div>
+
+    <div class="progress-box">
+      <div class="bar-label">距離下一級還差 320 分：</div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="ranking">
+      <h3>🏆 積分排行榜</h3>
+      <ul>
+        <li>小嶽 <span>950 分</span></li>
+        <li>芙芙 <span>920 分</span></li>
+        <li>阿綠 <span>870 分</span></li>
+        <li><strong>你</strong> <span>680 分</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footerContainer"></div>
+
+  <script>
+    // 載入 Nav / Footer
+    fetch("nav-nexelink.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("navContainer").innerHTML = html);
+
+    fetch("footer-nexelink.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footerContainer").innerHTML = html);
+  </script>
+
+</body>
+</html>

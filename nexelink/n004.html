@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>進度回報中心 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0a0f2c, #1c1f3b);
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      text-shadow: 0 0 6px #00ffcc;
+    }
+
+    form {
+      background-color: #1a1a2e;
+      border: 1px solid #00ffcc55;
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+
+    input[type="file"] {
+      background-color: #fff;
+      color: #000;
+    }
+
+    button {
+      background-color: #00ffcc55;
+      border: 1px solid #00ffcc;
+      padding: 12px 24px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00ffcc88;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+  <h1>📈 進度回報中心</h1>
+  <form>
+    <label for="task">選擇任務類型</label>
+    <select id="task" name="task">
+      <option value="video">🎬 影片剪輯</option>
+      <option value="frontend">🌐 前端開發</option>
+      <option value="fullstack">🔗 全端開發</option>
+      <option value="backend">💾 後端開發</option>
+      <option value="design">🎨 平面設計</option>
+      <option value="app">📱 APP 開發</option>
+    </select>
+
+    <label for="progress">目前完成比例 (%)</label>
+    <input type="number" id="progress" name="progress" min="0" max="100" placeholder="例如：75">
+
+    <label for="update">進度描述</label>
+    <textarea id="update" name="update" rows="4" placeholder="請敘述目前完成內容與遇到的問題..."></textarea>
+
+    <label for="preview">預覽連結（選填）</label>
+    <input type="url" id="preview" name="preview" placeholder="例如：https://demo.yoursite.com">
+
+    <label for="image">上傳圖像（選填）</label>
+    <input type="file" id="image" name="image" multiple>
+
+    <button type="submit">✅ 提交回報</button>
+  </form>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>AI 協助中心 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #090e25, #1c1f3a);
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      text-shadow: 0 0 6px #00ffcc;
+    }
+
+    .quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quick-buttons button {
+      flex: 1 1 30%;
+      padding: 10px;
+      background-color: #00ffcc33;
+      border: 1px solid #00ffcc;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .quick-buttons button:hover {
+      background-color: #00ffcc55;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background-color: #121224;
+      color: white;
+    }
+
+    .response-box {
+      background-color: #1a1a2e;
+      border: 1px solid #00ffcc55;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+
+    button.submit-btn {
+      background-color: #00ffcc55;
+      border: 1px solid #00ffcc;
+      padding: 12px 24px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button.submit-btn:hover {
+      background-color: #00ffcc88;
+    }
+
+    @media (max-width: 768px) {
+      .quick-buttons button {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+  <h1>🤖 AI 協助中心</h1>
+
+  <div class="quick-buttons">
+    <button onclick="insertTask('影片剪輯格式建議')">🎬 影片剪輯</button>
+    <button onclick="insertTask('前端任務撰寫建議')">🌐 前端任務</button>
+    <button onclick="insertTask('任務回報內容格式建議')">📝 回報格式</button>
+  </div>
+
+  <label for="ai-input">請輸入您需要協助的任務說明或問題：</label>
+  <textarea id="ai-input" rows="5" placeholder="例如：幫我撰寫一個影片剪輯任務說明，包含目的、格式與繳交期限..."></textarea>
+
+  <button class="submit-btn" onclick="generateResponse()">✨ 產生建議</button>
+
+  <div id="ai-response" class="response-box" style="display:none;">
+    <strong>AI 建議：</strong>
+    <div id="response-text">請稍候，正在分析內容中...</div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  function insertTask(text) {
+    document.getElementById('ai-input').value = text;
+  }
+
+  function generateResponse() {
+    const input = document.getElementById('ai-input').value;
+    const responseDiv = document.getElementById('ai-response');
+    const textDiv = document.getElementById('response-text');
+    responseDiv.style.display = 'block';
+
+    if (!input.trim()) {
+      textDiv.innerText = "請先輸入任務說明或問題。";
+      return;
+    }
+
+    // 模擬 AI 回覆
+    textDiv.innerText = `✅ AI 格式建議：\n\n📌 標題：${input}\n📄 內容說明：請簡要說明目標與期望成果\n⏰ 期限設定：請標明確切日期\n📎 提交格式：mp4 / PDF / Figma 等格式皆可\n📬 提交方式：請回傳至任務中心或上傳至 Google Drive`;
+  }
+
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

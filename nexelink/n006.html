@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>聊天室 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0d1229, #1b1f3c);
+      color: white;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      margin: 80px auto;
+      height: 80vh;
+      border: 1px solid #00ffcc55;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #12152a;
+      padding: 14px;
+      font-weight: bold;
+      color: #00ffcc;
+      border-bottom: 1px solid #00ffcc33;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      background-color: #16192e;
+    }
+
+    .message {
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      background-color: #00ffcc22;
+      border-radius: 12px;
+      max-width: 75%;
+    }
+
+    .message.self {
+      background-color: #00ffcc55;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .chat-input {
+      display: flex;
+      background-color: #12152a;
+      border-top: 1px solid #00ffcc33;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background-color: #1b1f35;
+      color: white;
+    }
+
+    .chat-input button {
+      padding: 12px 20px;
+      background-color: #00ffcc55;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #00ffcc88;
+    }
+
+    @media (max-width: 768px) {
+      .chat-container {
+        height: 90vh;
+        margin: 60px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="chat-container">
+  <div class="chat-header">💬 Nexelink 即時聊天室</div>
+
+  <div class="chat-messages" id="chat-box">
+    <div class="message">👤 小明：我們的任務頁面更新好了！</div>
+    <div class="message self">🧑‍💻 你：太棒了，我來加進主頁。</div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="輸入訊息..." onkeydown="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()">傳送</button>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    const chatBox = document.getElementById('chat-box');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'message self';
+    msgDiv.innerText = '🧑‍💻 你：' + message;
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    input.value = '';
+  }
+
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>通知中心 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0a0f26, #1b1e3c);
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    .notification {
+      background-color: #1e2238;
+      border: 1px solid #00ffcc44;
+      border-left: 5px solid #00ffcc;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .notification h3 {
+      margin: 0 0 6px;
+      color: #00ffcc;
+    }
+
+    .notification p {
+      margin: 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .create-form {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #1a1d31;
+      border: 1px solid #00ffcc44;
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      background-color: #141628;
+      border: 1px solid #444;
+      color: white;
+    }
+
+    button {
+      background-color: #00ffcc55;
+      border: 1px solid #00ffcc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00ffcc88;
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+  <h1>📢 Nexelink 通知中心</h1>
+
+  <!-- 系統自動通知 -->
+  <div class="notification">
+    <h3>【自動提醒】任務編號 NX-314 即將到期！</h3>
+    <p>收件人：黃治閎｜剩餘 3 天內須交付影片剪輯任務。</p>
+  </div>
+
+  <div class="notification">
+    <h3>【系統通知】平台將於週六凌晨進行維護</h3>
+    <p>維護時間：本週六 00:00 ~ 06:00，請提前完成任務。</p>
+  </div>
+
+  <!-- 發送新通知 -->
+  <div class="create-form">
+    <h2>✉️ 建立新通知</h2>
+    <form>
+      <label for="recipient">收件人</label>
+      <select id="recipient">
+        <option value="all">📣 所有成員</option>
+        <option value="member1">黃治閎</option>
+        <option value="member2">林柏宇</option>
+        <option value="member3">葉郁庭</option>
+      </select>
+
+      <label for="title">通知標題</label>
+      <input type="text" id="title" placeholder="請輸入通知標題">
+
+      <label for="message">通知內容</label>
+      <textarea id="message" rows="4" placeholder="請輸入通知內容..."></textarea>
+
+      <button type="submit">📬 發送通知</button>
+    </form>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

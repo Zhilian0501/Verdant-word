@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Nexelink 總控台 n011</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(to right top, #0f2027, #203a43, #2c5364);
+      color: #ccffcc;
+      font-family: "Noto Sans TC", sans-serif;
+      margin: 0;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 2px solid #33ff99;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #444;
+      text-align: left;
+    }
+
+    th {
+      background-color: rgba(51, 255, 153, 0.2);
+    }
+
+    button {
+      padding: 6px 12px;
+      margin-right: 4px;
+      border: none;
+      border-radius: 6px;
+      background-color: #33ff99;
+      color: #003322;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00cc66;
+    }
+
+    .status {
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .done {
+      background-color: #00ff99;
+      color: #003322;
+    }
+
+    .pending {
+      background-color: #ffcc00;
+      color: #332200;
+    }
+
+    .late {
+      background-color: #ff4d4d;
+      color: #330000;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    @media screen and (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      td {
+        border: none;
+        border-bottom: 1px solid #444;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>🛠️ Nexelink 任務總控中心</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>任務名稱</th>
+      <th>負責人</th>
+      <th>狀態</th>
+      <th>到期日</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody id="taskTable">
+    <!-- 假資料將用 JavaScript 自動填入 -->
+  </tbody>
+</table>
+
+<footer>
+  Nexelink ⓒ 2025 ｜由翠峰資訊設計與維護
+</footer>
+
+<script>
+  const tasks = [
+    { title: "網站首頁設計", assignee: "Ray", status: "pending", due: "2025-06-02" },
+    { title: "行銷素材製作", assignee: "Mei", status: "done", due: "2025-05-25" },
+    { title: "伺服器設定優化", assignee: "Yu", status: "pending", due: "2025-06-08" },
+    { title: "動畫素材導入", assignee: "Chi", status: "late", due: "2025-05-20" },
+    { title: "會員系統整合", assignee: "Yin", status: "pending", due: "2025-06-01" }
+  ];
+
+  function renderTasks() {
+    const table = document.getElementById("taskTable");
+    table.innerHTML = "";
+    tasks.forEach((task, index) => {
+      const tr = document.createElement("tr");
+
+      const statusClass = task.status === "done" ? "done" :
+                          task.status === "late" ? "late" : "pending";
+
+      tr.innerHTML = `
+        <td>${task.title}</td>
+        <td>${task.assignee}</td>
+        <td><span class="status ${statusClass}">${task.status}</span></td>
+        <td>${task.due}</td>
+        <td>
+          <button onclick="markDone(${index})">完成</button>
+          <button onclick="editTask(${index})">編輯</button>
+          <button onclick="deleteTask(${index})">刪除</button>
+        </td>
+      `;
+      table.appendChild(tr);
+    });
+  }
+
+  function markDone(index) {
+    tasks[index].status = "done";
+    renderTasks();
+  }
+
+  function deleteTask(index) {
+    if (confirm("確定要刪除這個任務嗎？")) {
+      tasks.splice(index, 1);
+      renderTasks();
+    }
+  }
+
+  function editTask(index) {
+    const newTitle = prompt("修改任務名稱：", tasks[index].title);
+    if (newTitle) {
+      tasks[index].title = newTitle;
+      renderTasks();
+    }
+  }
+
+  // 初始載入
+  renderTasks();
+</script>
+
+</body>
+</html>

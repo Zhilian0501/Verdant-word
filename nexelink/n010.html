@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>AI 智慧助手 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0a0f26, #1d2444);
+      color: white;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    section {
+      background-color: #1a1f38;
+      border: 1px solid #00ffcc44;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      color: #00ffcc;
+      border-bottom: 1px solid #00ffcc44;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      background-color: #141628;
+      border: 1px solid #444;
+      color: white;
+    }
+
+    button {
+      margin-top: 16px;
+      background-color: #00ffcc55;
+      border: 1px solid #00ffcc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00ffcc88;
+    }
+
+    .output {
+      background-color: #141628;
+      padding: 10px;
+      margin-top: 12px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+  <h1>🤖 Nexelink AI 智慧助手</h1>
+
+  <section>
+    <h2>🎯 任務推薦</h2>
+    <p>根據你的近期任務與技能標籤，AI 為你推薦以下新案：</p>
+    <ul>
+      <li>📹 【影片剪輯】科技教育品牌形象影片（預估時長 60 秒）</li>
+      <li>🌐 【前端開發】活動報名頁面（含響應式設計）</li>
+    </ul>
+    <button onclick="alert('已加入個人推薦清單')">👍 加入我的推薦</button>
+  </section>
+
+  <section>
+    <h2>📝 AI 內容生成</h2>
+    <label for="prompt">請輸入想生成的內容主題：</label>
+    <input id="prompt" placeholder="例如：撰寫開場白、影片旁白...">
+    <button onclick="generateAI()">✨ 生成內容</button>
+    <div class="output" id="ai-output">這裡會顯示 AI 生成的內容...</div>
+  </section>
+
+  <section>
+    <h2>📊 任務總結分析</h2>
+    <p>根據目前專案進度，以下是總結：</p>
+    <div class="output">
+📁 專案：教育品牌行銷影片
+📌 負責人：林柏宇
+✅ 已完成：腳本撰寫、片頭設計
+🕒 進行中：剪輯中期版本
+⏰ 預估完成日：2025-06-04
+    </div>
+  </section>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  function generateAI() {
+    const input = document.getElementById('prompt').value;
+    const output = document.getElementById('ai-output');
+    if (input.trim() === "") {
+      output.textContent = "請輸入主題後再點擊生成。";
+    } else {
+      output.textContent = `【AI 生成內容】\n\n「${input}」的建議開場白如下：\n\n大家好，我是 Nexelink 團隊的成員，今天很高興向您介紹我們的最新成果...`;
+    }
+  }
+
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

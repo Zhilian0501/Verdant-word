@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Nexelink 專區首頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0c1442, #1d284a);
+      color: white;
+    }
+
+    .hero {
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      color: #00ffcc;
+      text-shadow: 0 0 6px #00ffcc;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .card {
+      background-color: #1a1a2e;
+      border: 1px solid #00ffcc44;
+      border-radius: 12px;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      background-color: #222;
+      box-shadow: 0 0 10px #00ffcc;
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      color: #00ffcc;
+      margin-bottom: 12px;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #00ffcc33;
+      color: white;
+      border: 1px solid #00ffcc88;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      background-color: #00ffcc55;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <div id="nav-placeholder"></div>
+
+  <div class="hero">
+    <h1>🚀 Nexelink 平台入口</h1>
+    <p>歡迎進入 Nexelink 數位工作平台，在這裡您可以接案、發案、協作與進度回報，打造屬於未來的數位團隊。</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🎯 接案中心</h3>
+      <a href="n002.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>📤 發案中心</h3>
+      <a href="n003.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>📈 進度回報</h3>
+      <a href="n004.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>🧠 AI 協助</h3>
+      <a href="n005.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>🧾 文件交換</h3>
+      <a href="n006.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>💬 團隊聊天室</h3>
+      <a href="n007.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>📅 智慧日曆</h3>
+      <a href="n008.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>🔔 通知中心</h3>
+      <a href="n009.html">進入</a>
+    </div>
+    <div class="card">
+      <h3>🛠️ 管理後台</h3>
+      <a href="n011.html">進入</a>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // 動態插入 Nav 與 Footer（可改為後端模板）
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+  </script>
+
+</body>
+</html>

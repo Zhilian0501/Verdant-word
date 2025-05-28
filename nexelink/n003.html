@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>發案中心 | Nexelink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nav.html">
+  <link rel="stylesheet" href="footer.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0c1442, #1e1e3f);
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      text-shadow: 0 0 6px #00ffcc;
+    }
+
+    form {
+      background-color: #1a1a2e;
+      border: 1px solid #00ffcc55;
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+
+    input[type="file"] {
+      background-color: #fff;
+      color: #000;
+    }
+
+    button {
+      background-color: #00ffcc55;
+      border: 1px solid #00ffcc;
+      padding: 12px 24px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #00ffcc88;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="container">
+  <h1>📤 發案中心</h1>
+  <form>
+    <label for="type">任務類型</label>
+    <select id="type" name="type">
+      <option value="video">🎬 影片剪輯</option>
+      <option value="frontend">🌐 前端開發</option>
+      <option value="fullstack">🔗 全端開發</option>
+      <option value="backend">💾 後端開發</option>
+      <option value="design">🎨 平面設計</option>
+      <option value="app">📱 APP 開發</option>
+    </select>
+
+    <label for="title">任務標題</label>
+    <input type="text" id="title" name="title" placeholder="例如：製作翠峰首頁動畫版">
+
+    <label for="desc">任務描述</label>
+    <textarea id="desc" name="desc" rows="5" placeholder="請詳細描述任務內容、注意事項與提交格式等..."></textarea>
+
+    <label for="deadline">繳交期限</label>
+    <input type="date" id="deadline" name="deadline">
+
+    <label for="link">素材或參考連結</label>
+    <input type="url" id="link" name="link" placeholder="例如：https://drive.google.com/xxxx">
+
+    <label for="file">上傳附件（可選）</label>
+    <input type="file" id="file" name="file" multiple>
+
+    <button type="submit">✅ 發佈任務</button>
+  </form>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('nav-placeholder').innerHTML = data);
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>
