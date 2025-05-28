@@ -1,127 +1,46 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  <link rel="stylesheet" href="/app-sys/app-sys.css">
   <meta charset="UTF-8">
   <title>翠峰員工應用系統</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  /* 🌿 翠峰科技自然背景 */
-  body {
-    margin: 0;
-   padding: 0;
-   font-family: 'Segoe UI', sans-serif;
-   background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4);
-   color: #1f3b3a;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-  }
-    h1 {
-      text-align: center;
-      color: #2a6f4e;
-    }
-    .search-bar {
-      max-width: 400px;
-      margin: 20px auto;
-      text-align: center;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    h2 {
-      color: #333;
-      margin-top: 30px;
-      font-size: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      margin: 6px 0;
-      padding-left: 8px;
-    }
-    a {
-      text-decoration: none;
-      color: #0066cc;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .icon {
-      margin-right: 8px;
-    }
-    @media (max-width: 600px) {
-      body {
-        padding: 16px;
-      }
-      h1 {
-        font-size: 24px;
-      }
-    }
-    /* 🌿 功能群組標題樣式 */
-h2 {
-  background-color: #ffffffc2;
-  padding: 8px 16px;
-  border-left: 6px solid #7ed957;
-  border-radius: 12px;
-  margin: 40px 0 16px;
-  font-size: 20px;
-  color: #2e7d32;
-  box-shadow: 0 2px 6px rgba(120, 255, 180, 0.15);
-}
+  /* 🌿 翠峰 員工應用系統 - 主樣式表 */
 
-/* 🧩 清單區塊樣式 */
-ul {
-  list-style: none;
+/* 全站背景與基本字體設定 */
+body {
+  margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 14px;
-}
-
-/* 📋 單一功能卡片樣式 */
-li {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 14px;
-  padding: 12px 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-left: 5px solid #81c784;
-  box-shadow: 0 2px 10px rgba(120, 255, 180, 0.1);
-}
-
-li:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 20px rgba(120, 255, 180, 0.3);
-}
-
-/* 🔗 連結樣式 */
-a {
-  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4);
   color: #1f3b3a;
-  font-weight: 600;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
 }
 
-a:hover {
-  color: #00796b;
-  text-decoration: underline;
+h1 {
+  text-align: center;
+  color: #2a6f4e;
+  margin-top: 24px;
 }
 
-/* 🖼 圖示 */
-.icon {
-  font-size: 18px;
+/* 搜尋列樣式 */
+.search-bar {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-/* 區塊區隔：大分類外框 */
+/* 各大區塊容器 */
 .section-block {
   margin: 40px auto;
   max-width: 1000px;
@@ -181,8 +100,13 @@ a:hover {
   .card-container {
     grid-template-columns: 1fr;
   }
+  h1 {
+    font-size: 24px;
+  }
+  .search-bar {
+    padding: 0 16px;
+  }
 }
-
   </style>
 </head>
 <body>
@@ -194,7 +118,7 @@ a:hover {
 </div>
 
 <div id="systemList">
-
+  
   <h2>📂 VPD</h2>
   <ul>
     <li><a href="../app-sys/A-block/A001.html">📧 A001 - 員工電子郵件系統</a></li>

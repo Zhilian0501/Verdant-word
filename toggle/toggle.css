@@ -1,0 +1,21 @@
+/* 🌞 白天模式（預設） */
+body {
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4);
+  color: #1f3b3a;
+}
+
+/* 🌙 夜間模式 */
+body.dark-mode {
+  background: linear-gradient(135deg, #1b2a3a, #0e1e28, #0c0f13);
+  color: #e0f7fa;
+}
+
+.section-block.dark-mode {
+  background: rgba(40, 60, 80, 0.9);
+  border-left: 8px solid #4db6ac;
+}
+
+li.dark-mode {
+  background: #24343f;
+  border-left: 4px solid #4db6ac;
+}
