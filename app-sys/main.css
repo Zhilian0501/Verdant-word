@@ -1,0 +1,122 @@
+/* 🌿 翠峰科技自然背景 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4);
+  color: #1f3b3a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 📦 通用容器 */
+.container {
+  max-width: 960px;
+  margin: 80px auto 40px;
+  padding: 20px;
+}
+
+/* 🧊 卡片樣式 */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 6px solid #7ed957; /* 亮綠色側邊條 */
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 12px rgba(120, 255, 180, 0.2);
+}
+
+/* 📝 卡片標題 */
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  color: #388e3c; /* 深綠色標題 */
+}
+
+/* 🧾 表單標籤 */
+label {
+  display: block;
+  margin-top: 16px;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+/* 📋 輸入欄位 */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #a5d6a7;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #1f3b3a;
+  margin-top: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ✅ 按鈕樣式 */
+button,
+input[type="submit"] {
+  background-color: #a8e6cf;
+  color: #1f3b3a;
+  border: 2px solid #7ed957;
+  padding: 10px 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #7ed957;
+  color: #fff;
+}
+
+/* 📋 表格樣式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #d0e8d0;
+}
+
+th {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+/* 🟢 響應式設計 */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  input, select, textarea {
+    font-size: 1rem;
+  }
+}

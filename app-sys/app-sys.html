@@ -5,12 +5,17 @@
   <title>翠峰員工應用系統</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: "Microsoft JhengHei", sans-serif;
-      background: #f9f9f9;
-      padding: 20px;
-      margin: 0;
-    }
+  /* 🌿 翠峰科技自然背景 */
+  body {
+    margin: 0;
+   padding: 0;
+   font-family: 'Segoe UI', sans-serif;
+   background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4);
+   color: #1f3b3a;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+  }
     h1 {
       text-align: center;
       color: #2a6f4e;
@@ -60,6 +65,124 @@
         font-size: 24px;
       }
     }
+    /* 🌿 功能群組標題樣式 */
+h2 {
+  background-color: #ffffffc2;
+  padding: 8px 16px;
+  border-left: 6px solid #7ed957;
+  border-radius: 12px;
+  margin: 40px 0 16px;
+  font-size: 20px;
+  color: #2e7d32;
+  box-shadow: 0 2px 6px rgba(120, 255, 180, 0.15);
+}
+
+/* 🧩 清單區塊樣式 */
+ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* 📋 單一功能卡片樣式 */
+li {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 12px 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 5px solid #81c784;
+  box-shadow: 0 2px 10px rgba(120, 255, 180, 0.1);
+}
+
+li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(120, 255, 180, 0.3);
+}
+
+/* 🔗 連結樣式 */
+a {
+  text-decoration: none;
+  color: #1f3b3a;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+a:hover {
+  color: #00796b;
+  text-decoration: underline;
+}
+
+/* 🖼 圖示 */
+.icon {
+  font-size: 18px;
+}
+
+/* 區塊區隔：大分類外框 */
+.section-block {
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 128, 96, 0.1);
+  border-left: 8px solid #7ed957;
+}
+
+/* 大標題樣式 */
+.section-block h2 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #256d4d;
+  margin-bottom: 20px;
+  padding-left: 4px;
+  border-left: 6px solid #81c784;
+}
+
+/* 卡片群容器 */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+/* 每一張功能卡片 */
+.card {
+  background: #f8fff9;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(120, 255, 180, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #7ecf99;
+}
+
+.card a {
+  color: #1f3b3a;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(120, 255, 180, 0.3);
+}
+
+/* 響應式手機優化 */
+@media (max-width: 640px) {
+  .section-block {
+    padding: 16px;
+  }
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </head>
 <body>
