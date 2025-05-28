@@ -2,88 +2,149 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>翠峰員工平台 - 首頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>翠峰員工系統首頁</title>
+  <!-- 導入 FullCalendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
   <style>
     body {
-      font-family: sans-serif;
       margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 1em;
-    }
-    header h1 {
-  flex: 1 1 100%;
-  text-align: center;
-  margin: 0.5em 0;
-}
-    .nav-toggle {
-      display: none;
-      font-size: 1.5em;
-      cursor: pointer;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      gap: 1em;
-      margin: 0;
-      justify-content: space-between;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f9f6;
     }
 
-    /* 響應式處理 */
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-      nav ul {
-        flex-direction: column;
-        display: none;
-        background-color: #34495e;
-        margin-top: 1em;
-      }
-      nav ul.show {
-        display: flex;
-      }
-    } 
+    .container {
+      max-width: 1200px;
+      margin: 100px auto 60px;
+      padding: 20px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #2c3e50;
+    }
+
+    #calendar {
+      max-width: 100%;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
 
-  <main>
-    <section>
-      <h2>公告與消息</h2>
-      <p>請記得完成每月訓練測驗。</p>
-    </section>
-    <section>
-      <h2>快捷連結</h2>
-      <ul>
-        <li><a href="training.html">教育訓練</a></li>
-        <li><a href="salary.html">薪資查詢</a></li>
-        <li><a href="checkin.html">簽到排行</a></li>
-        <li><a href="discussion.html">討論平台</a></li>
-        <li><a herf="/workspaces/Verdant-word/nexelink/n001.html">Nexelink</a></li>
-      </ul>
-    </section>
-  </main>
+  <!-- 模組化導覽列 -->
+  <div id=""></div>
 
-  <footer>
-    <p>&copy; 2025 翠峰企業有限公司</p>
-  </footer>
+  <div class="container">
+    <h1>歡迎使用翠峰員工系統</h1>
+    
+    <!-- 行事曆 -->
+    <div class="card">
+      <h3>📅 行事曆</h3>
+      <div id="calendar"></div>
+    </div>
+
+    <!-- 其他功能區塊 -->
+    <div class="dashboard">
+      <div class="card" onclick="location.href='app-sys/B-block/B002.html">
+        <h3>🎒 失物招領</h3>
+        <p>查看並回報失物</p>
+      </div>
+
+      <div class="card" onclick="location.href='profile.html'">
+        <h3>⚙️ 個人設定</h3>
+        <p>修改個人資訊與密碼</p>
+      </div>
+
+      <div class="card" onclick="location.href='wifi.html'">
+        <h3>🌐 Wi-Fi 申請</h3>
+        <p>提交無線網路帳號需求</p>
+      </div>
+
+      <div class="card" onclick="location.href='leave.html'">
+        <h3>📝 請假申請</h3>
+        <p>填寫請假資料與查詢記錄</p>
+      </div>
+
+      <div class="card" onclick="location.href='salary.html'">
+        <h3>💰 薪資查詢</h3>
+        <p>查看每月薪資明細</p>
+      </div>
+
+      <div class="card" onclick="location.href='task.html'">
+        <h3>📌 任務牆</h3>
+        <p>分派與查看任務狀況</p>
+      </div>
+
+      <div class="card" onclick="location.href='project.html'">
+        <h3>📈 進度協作</h3>
+        <p>協作專案與追蹤進度</p>
+      </div>
+
+      <div class="card" onclick="location.href='test.html'">
+        <h3>🧠 考核與測驗</h3>
+        <p>進行職能測驗與評分</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模組化頁尾 -->
+  <div id="footer-placeholder"></div>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('show');
-    }
+    // 載入 nav.html 與 footer.html
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('nav.html')
+        .then(res => res.text())
+        .then(html => document.getElementById('nav-placeholder').innerHTML = html);
+
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(html => document.getElementById('footer-placeholder').innerHTML = html);
+    });
+
+    // 行事曆初始化
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        height: 400,
+        locale: 'zh-tw',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek'
+        },
+        events: [
+          { title: '月會', date: '2025-06-05' },
+          { title: '專案截止', date: '2025-06-12' }
+        ]
+      });
+      calendar.render();
+    });
   </script>
+
 </body>
 </html>
-
