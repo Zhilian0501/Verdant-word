@@ -1,131 +1,397 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <button id="modeToggle">切換模式</button>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>翠峰員工系統首頁</title>
-  <!-- 導入 FullCalendar -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #47e7aa, #1bdbbb, #dae7e4);
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #47e7aa, #1bdbbb, #dae7e4);
-      min-height: 100vh;
-      background-attachment: fixed;
-    }
+  .container {
+    max-width: 1200px;
+    margin: 100px auto 60px;
+    padding: 20px;
+  }
 
-    .container {
-      max-width: 1200px;
-      margin: 100px auto 60px;
-      padding: 20px;
-    }
+  h1 {
+    text-align: center;
+  }
 
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+  .announcement-area {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px; /* ✅ 與日曆拉開距離 */
+  }
 
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 10px;
-      border-radius: 13px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-      backdrop-filter: blur(6px);
-    }
+  .announcement-box,
+  .carousel-box {
+    border: 1px solid rgba(0, 0, 0, 0.1);       /* ✅ 邊框 */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);  /* ✅ 陰影 */
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
+  }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 10px rgba(219, 226, 226, 0.12);
-    }
+  .announcement-box:hover,
+  .carousel-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);  /* ✅ hover 浮起 */
+  }
 
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 25px;
-      color: #2c3e50;
-    }
+  .announcement-box {
+    flex: 0 0 40%;
+    padding: 20px;
+  }
 
-    .card p {
-      margin: 0;
-      color: #666;
-      font-size: 20px;
-    }
+  .announcement-box h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
 
-    #calendar {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-  </style>
+  .announcement-box ul {
+    padding-left: 18px;
+    margin: 0;
+    color: #555;
+    font-size: 16px;
+  }
+
+  .carousel-box {
+    flex: 0 0 60%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 240px;
+  }
+
+  .carousel-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .carousel-img.active {
+    opacity: 1;
+  }
+
+  .main-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .member-list {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 680px;
+  }
+
+  .member-list h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #2c3e50;
+  }
+
+  .department {
+    margin-bottom: 20px;
+  }
+
+  .department h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .department ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .department li {
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #555;
+  }
+
+  .dashboard-area {
+    flex-shrink: 0;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px;
+    border-radius: 13px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(6px);
+    text-decoration: none;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 10px rgba(219, 226, 226, 0.12);
+  }
+
+  .card h3 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    color: #2c3e50;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+  }
+
+  #calendar {
+    max-width: 100%;
+    margin: 20px auto;
+  }
+
+  .chat-btn {
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #009688;
+  transition: transform 0.2s ease;
+}
+
+.chat-btn:hover {
+  transform: scale(1.2);
+  color: #00796b;
+}
+
+.card-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  display: none;
+}
+
+.card-popup {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.card-popup img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-popup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+}
+
+.chat-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+</style>
 </head>
 <body>
 
   <!-- 模組化導覽列 -->
-  <div id=""></div>
+  <div id="nav-placeholder"></div>
 
   <div class="container">
     <h1>歡迎使用翠峰員工系統</h1>
-    
-    <!-- 行事曆 -->
+
+    <!-- 公告與輪播區塊 -->
+    <div class="announcement-area">
+      <div class="announcement-box">
+        <h3>📢 最新公告</h3>
+        <ul>
+          <li>6/5 舉行部門月會，請準時出席。</li>
+          <li>6/10 為報帳截止日，請及時提交。</li>
+          <li>7/1 起實施新版出勤制度。</li>
+        </ul>
+      </div>
+
+      <div class="carousel-box">
+        <div class="carousel">
+          <img src="images/banner1.jpg" alt="輪播圖片1" class="carousel-img active">
+          <img src="images/banner2.jpg" alt="輪播圖片2" class="carousel-img">
+          <img src="images/banner3.jpg" alt="輪播圖片3" class="carousel-img">
+        </div>
+      </div>
+    </div>
+
+    <!-- 行事曆區 -->
     <div class="card">
       <h3>📅 行事曆</h3>
       <div id="calendar"></div>
     </div>
 
-    <!-- 其他功能區塊 -->
-    <div class="dashboard">
-      <div class="card" onclick="location.href=''">
-        <h3>🎒 失物招領</h3>
-        <p>查看並回報失物</p>
-      </div>
+    <div class="main-layout">
+      <!-- 左側：部門成員 -->
+ <div class="member-list">
+  <h2>員工名單</h2>
 
-      <div class="card" onclick="location.href='profile.html'">
-        <h3>⚙️ 個人設定</h3>
-        <p>修改個人資訊與密碼</p>
-      </div>
+  <div class="department">
+    <h3>董事長</h3>
+    <ul>
+      <li class="chat-line">
+        <span>王董事</span>
+        <button class="chat-btn" onclick="showCard('王董事')">💬</button>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card" onclick="location.href='wifi.html'">
-        <h3>🌐 Wi-Fi 申請</h3>
-        <p>提交無線網路帳號需求</p>
-      </div>
+  <div class="department">
+    <h3>行政部</h3>
+    <ul>
+      <li class="chat-line">
+        <span>林小姐</span>
+        <button class="chat-btn" onclick="showCard('林小姐')">💬</button>
+      </li>
+      <li class="chat-line">
+        <span>黃先生</span>
+        <button class="chat-btn" onclick="showCard('黃先生')">💬</button>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card" onclick="location.href='leave.html'">
-        <h3>📝 請假申請</h3>
-        <p>填寫請假資料與查詢記錄</p>
-      </div>
+  <div class="department">
+    <h3>會計部</h3>
+    <ul>
+      <li class="chat-line">
+        <span>周小姐</span>
+        <button class="chat-btn" onclick="showCard('周小姐')">💬</button>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card" onclick="location.href='salary.html'">
-        <h3>💰 薪資查詢</h3>
-        <p>查看每月薪資明細</p>
-      </div>
+  <div class="department">
+    <h3>技術部</h3>
+    <ul>
+      <li class="chat-line">
+        <span>陳工程師</span>
+        <button class="chat-btn" onclick="showCard('陳工程師')">💬</button>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card" onclick="location.href='task.html'">
-        <h3>📌 任務牆</h3>
-        <p>分派與查看任務狀況</p>
-      </div>
+  <div class="department">
+    <h3>研發部</h3>
+    <ul>
+      <li class="chat-line">
+        <span>林博士</span>
+        <button class="chat-btn" onclick="showCard('林博士')">💬</button>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card" onclick="location.href='project.html'">
-        <h3>📈 進度協作</h3>
-        <p>協作專案與追蹤進度</p>
-      </div>
+  <div class="department">
+    <h3>IT 部門</h3>
+    <ul>
+      <li class="chat-line">
+        <span>李工程師</span>
+        <button class="chat-btn" onclick="showCard('李工程師')">💬</button>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card" onclick="location.href='test.html'">
-        <h3>🧠 考核與測驗</h3>
-        <p>進行職能測驗與評分</p>
+  <div class="department">
+    <h3>設計部</h3>
+    <ul>
+      <li class="chat-line">
+        <span>吳設計師</span>
+        <button class="chat-btn" onclick="showCard('吳設計師')">💬</button>
+      </li>
+    </ul>
+  </div>
+</div>
+      <!-- 右側：功能卡片 -->
+      <div class="dashboard-area">
+        <a href="/app-sys/B-block/B002.html" class="card">
+          <h3>🎒 失物招領</h3><p>查看並回報失物</p>
+        </a>
+        <a href="profile.html" class="card">
+          <h3>⚙️ 個人設定</h3><p>修改個人資訊與密碼</p>
+        </a>
+        <a href="/app-sys/C-block/c006.html" class="card">
+          <h3>🌐 Wi-Fi 申請</h3><p>提交無線網路帳號需求</p>
+        </a>
+        <a href="/app-sys/D-block/d001.html" class="card">
+          <h3>📝 請假申請</h3><p>填寫請假資料與查詢記錄</p>
+        </a>
+        <a href="/app-sys/E-block/e001.html" class="card">
+          <h3>💰 薪資查詢</h3><p>查看每月薪資明細</p>
+        </a>
+        <a href="/app-sys/F-block/f001.html" class="card">
+          <h3>📌 任務牆</h3><p>分派與查看任務狀況</p>
+        </a>
+        <a href="/app-sys/F-block/f003.html" class="card">
+          <h3>📈 進度協作</h3><p>協作專案與追蹤進度</p>
+        </a>
+        <a href="/app-sys/G-block/g001.html" class="card">
+          <h3>🧠 考核與測驗</h3><p>進行職能測驗與評分</p>
+        </a>
       </div>
     </div>
+    <div id="popupOverlay" class="card-popup-overlay">
+  <div class="card-popup">
+    <button class="close-btn" onclick="closeCard()">✖</button>
+    <img id="cardImage" src="" alt="員工名片">
+  </div>
+</div>
+
   </div>
 
   <!-- 模組化頁尾 -->
   <div id="footer-placeholder"></div>
 
   <script>
-    // 載入 nav.html 與 footer.html
     window.addEventListener('DOMContentLoaded', () => {
       fetch('nav.html')
         .then(res => res.text())
@@ -136,7 +402,7 @@
         .then(html => document.getElementById('footer-placeholder').innerHTML = html);
     });
 
-    // 行事曆初始化
+    // FullCalendar 初始化
     document.addEventListener('DOMContentLoaded', function () {
       const calendarEl = document.getElementById('calendar');
       const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -154,8 +420,35 @@
         ]
       });
       calendar.render();
-    });
-  </script>
 
+      // 輪播圖播放
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-img');
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 4000);
+    });
+
+    function showCard(name) {
+  const cardImg = document.getElementById('cardImage');
+  
+  // 可根據姓名換圖片，如有需要可自定義資料對應
+  const nameMap = {
+    "林小姐": "images/card_lin.jpg",
+    "黃先生": "images/card_huang.jpg",
+    "王董事": "images/card_wang.jpg"
+  };
+  
+  cardImg.src = nameMap[name] || "images/card_default.jpg"; // 預設卡片
+  document.getElementById('popupOverlay').style.display = 'flex';
+}
+
+function closeCard() {
+  document.getElementById('popupOverlay').style.display = 'none';
+}
+
+  </script>
 </body>
 </html>
